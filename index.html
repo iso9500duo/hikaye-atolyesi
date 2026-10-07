@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hikâye Atölyesi – 4 Unsurla Hikâyeni Oluştur</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%3E<text y=%2226%22 font-size=%2224%22>📖</text></svg>">
+</head>
+<body>
+
+  <!-- ==================== ÜST ÇUBUK (NAVBAR) ==================== -->
+  <header class="navbar">
+    <div class="container nav-wrapper">
+      <a href="#hero" class="brand" id="brand-link">
+        <div class="brand-icon">🖋️</div>
+        <div class="brand-text">
+          <h1>Hikâye Atölyesi</h1>
+          <span class="brand-badge">Edebiyat & Yaratıcı Yazarlık</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <button type="button" class="btn-icon" id="btn-toggle-sound" title="Sesi Aç / Kapat" aria-label="Sesi Aç / Kapat">
+          <span id="sound-icon">🔊</span>
+        </button>
+        <button type="button" class="btn-icon" id="btn-open-settings" title="Yapay Zekâ Ayarları" aria-label="Yapay Zekâ Ayarları">
+          ⚙️
+        </button>
+        <button type="button" class="btn-icon" id="btn-reset-app" title="Yeni Hikâye Başlat" aria-label="Yeni Hikâye">
+          🔄
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== İLERLEME GÖSTERGESİ (PROGRESS STEPPER) ==================== -->
+  <div class="stepper-container">
+    <div class="container">
+      <div class="stepper" id="main-stepper">
+        <div class="stepper-line">
+          <div class="stepper-progress" id="stepper-progress-bar"></div>
+        </div>
+
+        <button type="button" class="step-item active" data-step="1" id="step-btn-1">
+          <div class="step-circle">1</div>
+          <span class="step-label">Unsurları Seç</span>
+        </button>
+
+        <button type="button" class="step-item" data-step="2" id="step-btn-2">
+          <div class="step-circle">2</div>
+          <span class="step-label">Hikâyeni Oluştur</span>
+        </button>
+
+        <button type="button" class="step-item" data-step="3" id="step-btn-3">
+          <div class="step-circle">3</div>
+          <span class="step-label">Kendi Hikâyeni Yaz</span>
+        </button>
+
+        <button type="button" class="step-item" data-step="4" id="step-btn-4">
+          <div class="step-circle">4</div>
+          <span class="step-label">Değerlendir</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==================== HERO BÖLÜMÜ (ANA SAYFA) ==================== -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero-pill">
+          <span>✨ İnteraktif Türkçe Edebiyat Uygulaması</span>
+        </div>
+        <h1 class="hero-title">📖 HİKÂYE ATÖLYESİ</h1>
+        <h2 class="hero-subtitle">"4 unsur seç, hayal gücünü kullan, hikâyeni oluştur!"</h2>
+        <p class="hero-desc">
+          Her hikâyenin temelinde <strong>olay</strong>, <strong>kişiler</strong>, <strong>mekân</strong> ve <strong>zaman</strong> vardır.
+          Her kategoriden bir seçenek seç ve bu dört unsuru bir araya getirerek kendi hikâyeni oluştur.
+        </p>
+        <a href="#selection-area" class="btn-hero" id="btn-start-hero">
+          HİKÂYE OLUŞTURMAYA BAŞLA ⚡
+        </a>
+      </div>
+    </section>
+
+    <!-- ==================== 1. ADIM: 4 TEMEL UNSUR SEÇİM ALANI ==================== -->
+    <section class="section-selection" id="selection-area">
+      <div class="container">
+        
+        <!-- 4 KART IZGARASI -->
+        <div class="cards-grid">
+          
+          <!-- KART 1: OLAY -->
+          <div class="element-card card-olay" id="card-olay">
+            <div class="card-header">
+              <div class="card-title-group">
+                <div class="card-icon">⚡</div>
+                <div>
+                  <h3>OLAY</h3>
+                </div>
+              </div>
+              <button type="button" class="btn-refresh-card" data-category="olay" title="Yeni seçenekler getir">
+                <span class="refresh-icon">🔄</span> Yenile
+              </button>
+            </div>
+            <div class="card-body">
+              <p class="card-instruction">Bir olay seç (yalnızca 1 seçim):</p>
+              <div class="options-container" id="options-olay">
+                <!-- Dinamik JS seçenekleri buraya yüklenir -->
+              </div>
+            </div>
+          </div>
+
+          <!-- KART 2: KİŞİLER -->
+          <div class="element-card card-kisiler" id="card-kisiler">
+            <div class="card-header">
+              <div class="card-title-group">
+                <div class="card-icon">👤</div>
+                <div>
+                  <h3>KİŞİLER</h3>
+                </div>
+              </div>
+              <button type="button" class="btn-refresh-card" data-category="kisiler" title="Yeni seçenekler getir">
+                <span class="refresh-icon">🔄</span> Yenile
+              </button>
+            </div>
+            <div class="card-body">
+              <p class="card-instruction">Karakterini seç (yalnızca 1 seçim):</p>
+              <div class="options-container" id="options-kisiler">
+                <!-- Dinamik JS seçenekleri buraya yüklenir -->
+              </div>
+            </div>
+          </div>
+
+          <!-- KART 3: MEKÂN -->
+          <div class="element-card card-mekan" id="card-mekan">
+            <div class="card-header">
+              <div class="card-title-group">
+                <div class="card-icon">📍</div>
+                <div>
+                  <h3>MEKÂN</h3>
+                </div>
+              </div>
+              <button type="button" class="btn-refresh-card" data-category="mekan" title="Yeni seçenekler getir">
+                <span class="refresh-icon">🔄</span> Yenile
+              </button>
+            </div>
+            <div class="card-body">
+              <p class="card-instruction">Mekânını seç (yalnızca 1 seçim):</p>
+              <div class="options-container" id="options-mekan">
+                <!-- Dinamik JS seçenekleri buraya yüklenir -->
+              </div>
+            </div>
+          </div>
+
+          <!-- KART 4: ZAMAN -->
+          <div class="element-card card-zaman" id="card-zaman">
+            <div class="card-header">
+              <div class="card-title-group">
+                <div class="card-icon">⏳</div>
+                <div>
+                  <h3>ZAMAN</h3>
+                </div>
+              </div>
+              <button type="button" class="btn-refresh-card" data-category="zaman" title="Yeni seçenekler getir">
+                <span class="refresh-icon">🔄</span> Yenile
+              </button>
+            </div>
+            <div class="card-body">
+              <p class="card-instruction">Zaman dilimini seç (yalnızca 1 seçim):</p>
+              <div class="options-container" id="options-zaman">
+                <!-- Dinamik JS seçenekleri buraya yüklenir -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SEÇİMLERİN ÖZETİ VE HİKÂYE OLUŞTURMA ALANI -->
+        <div class="selection-summary-card" id="selection-summary">
+          <div class="summary-header-row">
+            <div class="summary-title-area">
+              <h2>📋 HİKÂYENİN TEMEL UNSURLARI</h2>
+            </div>
+            <div class="gamification-badge" id="gamification-badge">
+              <span id="badge-icon">🎯</span>
+              <span id="badge-text">0 / 4 unsur seçildi</span>
+            </div>
+          </div>
+
+          <div class="summary-items-grid">
+            <div class="summary-pill pill-kisiler empty" id="summary-pill-kisiler">
+              <span class="summary-pill-label">👤 Kişi</span>
+              <span class="summary-pill-value" id="summary-val-kisiler">Henüz seçilmedi</span>
+            </div>
+
+            <div class="summary-pill pill-mekan empty" id="summary-pill-mekan">
+              <span class="summary-pill-label">📍 Mekân</span>
+              <span class="summary-pill-value" id="summary-val-mekan">Henüz seçilmedi</span>
+            </div>
+
+            <div class="summary-pill pill-zaman empty" id="summary-pill-zaman">
+              <span class="summary-pill-label">⏳ Zaman</span>
+              <span class="summary-pill-value" id="summary-val-zaman">Henüz seçilmedi</span>
+            </div>
+
+            <div class="summary-pill pill-olay empty" id="summary-pill-olay">
+              <span class="summary-pill-label">⚡ Olay</span>
+              <span class="summary-pill-value" id="summary-val-olay">Henüz seçilmedi</span>
+            </div>
+          </div>
+
+          <div class="summary-action-area">
+            <div class="alert-warning-text" id="selection-alert">
+              ⚠️ Hikâyeni oluşturmak için dört yapı unsurundan da birer seçim yapmalısın.
+            </div>
+
+            <button type="button" class="btn-generate" id="btn-generate-story" disabled>
+              <span>✨ HİKÂYEMİ OLUŞTUR</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 2. ADIM: AI HİKÂYE EKRANI (ÖRNEK MODEL) ==================== -->
+    <section class="section-story-result" id="story-result-section">
+      <div class="container">
+        <div class="story-card-wrapper">
+          
+          <div class="story-header-row">
+            <div>
+              <div class="story-badge-header">
+                <span>📖 HİKÂYEN HAZIR!</span>
+              </div>
+              <h2 class="story-main-title" id="story-display-title">Hikâye Başlığı Yükleniyor...</h2>
+              <div class="story-meta-provider" id="story-provider-info">Model: Yapay Zekâ Destekli Edebi Anlatı</div>
+            </div>
+
+            <!-- Araç Çubuğu -->
+            <div class="story-toolbar">
+              <button type="button" class="btn-tool" id="btn-read-aloud" title="Metni Türkçe Seslendir">
+                <span id="read-icon">🔊</span> <span id="read-text">Sesli Dinle</span>
+              </button>
+              <button type="button" class="btn-tool" id="btn-copy-story" title="Hikâyeyi Kopyala">
+                📋 Kopyala
+              </button>
+              <button type="button" class="btn-tool" id="btn-download-story" title="Metin Dosyası Olarak İndir">
+                📥 İndir (.txt)
+              </button>
+              <button type="button" class="btn-tool" id="btn-print-story" title="Hikâyeyi Yazdır">
+                🖨️ Yazdır
+              </button>
+            </div>
+          </div>
+
+          <!-- Pedagojik İlham Uyarısı -->
+          <div class="pedagogy-callout">
+            <div class="callout-icon">💡</div>
+            <div class="callout-content">
+              <h4>Öğretmeninden Önemli Not:</h4>
+              <p>Bu hikâye sana ilham vermek için yapay zekâ tarafından oluşturulmuş bir <strong>örnek modeldir</strong>. Kendi hikâyeni yazarken bu anlatıdan esinlenebilir, ancak doğrudan kopyalamak yerine kendi özgün hayal gücünü kullanmalısın!</p>
+            </div>
+          </div>
+
+          <!-- Kullanılan Yapı Unsurları Tablosu -->
+          <div class="elements-table-wrapper">
+            <table class="elements-table">
+              <thead>
+                <tr>
+                  <th>Yapı Unsuru</th>
+                  <th>Seçim</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="table-element-tag" style="color: var(--olay-color);">⚡ Olay</span></td>
+                  <td id="table-val-olay">-</td>
+                </tr>
+                <tr>
+                  <td><span class="table-element-tag" style="color: var(--kisiler-color);">👤 Kişiler</span></td>
+                  <td id="table-val-kisiler">-</td>
+                </tr>
+                <tr>
+                  <td><span class="table-element-tag" style="color: var(--mekan-color);">📍 Mekân</span></td>
+                  <td id="table-val-mekan">-</td>
+                </tr>
+                <tr>
+                  <td><span class="table-element-tag" style="color: var(--zaman-color);">⏳ Zaman</span></td>
+                  <td id="table-val-zaman">-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Hikâye Metni -->
+          <div class="story-prose-container" id="story-prose-content">
+            <!-- Dinamik paragraflar buraya yerleştirilir -->
+          </div>
+
+          <div class="story-footer-nav">
+            <button type="button" class="btn-proceed-writing" id="btn-proceed-to-writing">
+              <span>✍️ Şimdi Sıra Sende: Kendi Hikâyeni Yaz</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. ADIM: ÖĞRENCİNİN KENDİ HİKÂYESİNİ YAZMASI ==================== -->
+    <section class="section-writing-studio" id="writing-studio-section">
+      <div class="container">
+        
+        <div class="studio-grid">
+          
+          <!-- SOL: YAZIM EDİTÖRÜ -->
+          <div class="editor-card">
+            <div class="studio-header">
+              <h2>✍️ Şimdi sıra sende!</h2>
+              <p>
+                Yukarıdaki dört yapı unsurunu kullanarak kendi hikâyeni yaz.
+                AI tarafından oluşturulan hikâyeyi doğrudan kopyalamak yerine kendi hayal gücünü kullan.
+              </p>
+            </div>
+
+            <div class="input-title-wrapper">
+              <label for="student-story-title">Hikâye Başlığı</label>
+              <input type="text" id="student-story-title" class="input-story-title" placeholder="Örn: Zamanın Durduğu Eski Köşk" autocomplete="off">
+            </div>
+
+            <div class="editor-textarea-wrapper">
+              <label for="student-story-text">Hikâyem</label>
+              <textarea id="student-story-text" class="textarea-student-story" placeholder="Hikâyeni buraya yazmaya başla... Giriş bölümünde mekânı ve karakterini tanıt, gelişme bölümünde olayı derinleştir, sonuç bölümünde ise hikâyeni anlamlı bir çözüme kavuştur."></textarea>
+            </div>
+
+            <!-- Editör Durum Çubuğu -->
+            <div class="editor-status-bar">
+              <div class="stats-badges">
+                <span class="stat-item">Kelime: <strong id="stat-words">0</strong></span>
+                <span class="stat-item">Karakter: <strong id="stat-chars">0</strong></span>
+                <span class="stat-item">Paragraf: <strong id="stat-paragraphs">0</strong></span>
+              </div>
+              <div class="autosave-status" id="autosave-status">
+                <span>💾 Taslak yerel olarak kaydedildi</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SAĞ: HATIRLATICI VE KENDİNİ DEĞERLENDİRME ÇUBUĞU -->
+          <div class="studio-sidebar">
+            
+            <!-- 4 Unsur Hatırlatıcı -->
+            <div class="reminder-card">
+              <h3 class="sidebar-title">🎯 Seçtiğin 4 Unsur</h3>
+              <div class="reminder-chips">
+                <div class="reminder-chip chip-olay">
+                  <span class="chip-type">⚡ Olay</span>
+                  <span class="chip-val" id="reminder-val-olay">-</span>
+                </div>
+                <div class="reminder-chip chip-kisiler">
+                  <span class="chip-type">👤 Kişiler</span>
+                  <span class="chip-val" id="reminder-val-kisiler">-</span>
+                </div>
+                <div class="reminder-chip chip-mekan">
+                  <span class="chip-type">📍 Mekân</span>
+                  <span class="chip-val" id="reminder-val-mekan">-</span>
+                </div>
+                <div class="reminder-chip chip-zaman">
+                  <span class="chip-type">⏳ Zaman</span>
+                  <span class="chip-val" id="reminder-val-zaman">-</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- KENDİNİ DEĞERLENDİR (CHECKLIST) -->
+            <div class="checklist-card">
+              <h3 class="sidebar-title">✅ Hikâyemi Kontrol Ediyorum</h3>
+              <div class="checklist-progress-bar">
+                <div class="checklist-progress-fill" id="checklist-progress-fill"></div>
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;" id="checklist-count-text">
+                0 / 9 Kriter Sağlandı
+              </p>
+
+              <div class="checklist-items">
+                <label class="check-label">
+                  <input type="checkbox" class="student-check" id="check-1">
+                  <div class="custom-checkbox">✓</div>
+                  <span>Olayımı belirledim.</span>
+                </label>
+                <label class="check-label">
+                  <input type="checkbox" class="student-check" id="check-2">
+                  <div class="custom-checkbox">✓</div>
+                  <span>Hikâyemde karakterler bulunuyor.</span>
+                </label>
+                <label class="check-label">
+                  <input type="checkbox" class="student-check" id="check-3">
+                  <div class="custom-checkbox">✓</div>
+                  <span>Mekânı belirttim.</span>
+                </label>
+                <label class="check-label">
+                  <input type="checkbox" class="student-check" id="check-4">
+                  <div class="custom-checkbox">✓</div>
+                  <span>Zamanı belirttim.</span>
+                </label>
+                <label class="check-label">
+                  <input type="checkbox" class="student-check" id="check-5">
+                  <div class="custom-checkbox">✓</div>
+                  <span>Giriş bölümüm var.</span>
+                </label>
+                <label class="check-label">
+                  <input type="checkbox" class="student-check" id="check-6">
+                  <div class="custom-checkbox">✓</div>
+                  <span>Gelişme bölümüm var.</span>
+                </label>
+                <label class="check-label">
+                  <input type="checkbox" class="student-check" id="check-7">
+                  <div class="custom-checkbox">✓</div>
+                  <span>Sonuç bölümüm var.</span>
+                </label>
+                <label class="check-label">
+                  <input type="checkbox" class="student-check" id="check-8">
+                  <div class="custom-checkbox">✓</div>
+                  <span>Hikâyemde bir olay örgüsü oluşturdum.</span>
+                </label>
+                <label class="check-label">
+                  <input type="checkbox" class="student-check" id="check-9">
+                  <div class="custom-checkbox">✓</div>
+                  <span>Hikâyemi kendi cümlelerimle yazdım.</span>
+                </label>
+              </div>
+
+              <!-- AI Değerlendirme Butonu -->
+              <button type="button" class="btn-evaluate-story" id="btn-start-evaluation">
+                <span>🤖 Hikâyemi Değerlendir</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 4. ADIM: AI İLE GERİ BİLDİRİM VE DEĞERLENDİRME ==================== -->
+    <section class="section-evaluation-result" id="evaluation-result-section">
+      <div class="container">
+        
+        <div class="evaluation-card-wrapper">
+          
+          <!-- Banner & Rozet -->
+          <div class="evaluation-hero-banner">
+            <div class="banner-text-group">
+              <h2>🏆 Hikâyeni tamamladın!</h2>
+              <p>Tebrikler! Seçtiğin 4 yapı unsurunu kullanarak kendi özgün hikâyeni kaleme aldın. İşte hikâyenin edebi geri bildirimi:</p>
+            </div>
+            <div class="evaluation-score-circle">
+              <span class="score-number" id="eval-overall-score">9.2</span>
+              <span class="score-badge-tag" id="eval-badge-tag">Usta Öykücü 🌟</span>
+            </div>
+          </div>
+
+          <!-- 9 Kriterli Rubrik Izgarası -->
+          <div>
+            <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 18px; color: var(--text-main);">
+              📊 9 Temel Edebiyat Kriteri Değerlendirmesi
+            </h3>
+            <div class="rubric-grid" id="rubric-cards-grid">
+              <!-- 9 Rubrik kartı JS ile doldurulur -->
+            </div>
+          </div>
+
+          <!-- Niteliksel Geri Bildirim Bölümleri -->
+          <div class="feedback-sections-grid">
+            
+            <div class="feedback-box box-general">
+              <h4 class="feedback-box-title">📌 Genel Değerlendirme</h4>
+              <p id="eval-general-review">Hikâye genel değerlendirmesi hazırlanıyor...</p>
+            </div>
+
+            <div class="feedback-box box-strengths">
+              <h4 class="feedback-box-title">🌟 Güçlü Yönlerin</h4>
+              <ul class="feedback-list" id="eval-strengths-list">
+                <!-- JS ile doldurulur -->
+              </ul>
+            </div>
+
+            <div class="feedback-box box-improvements">
+              <h4 class="feedback-box-title">🎯 Geliştirebileceğin Yönler</h4>
+              <ul class="feedback-list" id="eval-improvements-list">
+                <!-- JS ile doldurulur -->
+              </ul>
+            </div>
+
+            <div class="feedback-box box-tip">
+              <h4 class="feedback-box-title">💡 Bir Sonraki Hikâyende Deneyebileceğin Öneri</h4>
+              <p id="eval-next-tip">Öneri hazırlanıyor...</p>
+            </div>
+
+          </div>
+
+          <!-- Alt İşlemler -->
+          <div class="evaluation-actions">
+            <div style="display: flex; gap: 10px;">
+              <button type="button" class="btn-tool" id="btn-print-eval">🖨️ Raporu Yazdır</button>
+              <button type="button" class="btn-tool" id="btn-download-eval">📥 Raporu İndir (.txt)</button>
+            </div>
+            <button type="button" class="btn-restart" id="btn-new-story-flow">
+              <span>🔄 Yeni Hikâye Oluştur</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== AI YÜKLEME MODALI (STEP 2 LOADING) ==================== -->
+  <div class="loading-overlay" id="loading-overlay" role="dialog" aria-modal="true">
+    <div class="loading-modal">
+      <div class="loading-icon-wrapper">
+        <span>🖋️</span>
+        <div class="loading-spinner-ring"></div>
+      </div>
+      <h3 class="loading-title">Hikâyen yazılıyor...</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">
+        Seçtiğin 4 yapı unsuru edebi bir kurguyla bir araya getiriliyor.
+      </p>
+
+      <ul class="loading-steps-list">
+        <li class="loading-step-item" id="load-step-1">
+          <span>⏳</span> Olay örgüsü oluşturuluyor...
+        </li>
+        <li class="loading-step-item" id="load-step-2">
+          <span>⏳</span> Karakterler hikâyeye yerleştiriliyor...
+        </li>
+        <li class="loading-step-item" id="load-step-3">
+          <span>⏳</span> Mekân ve zaman işleniyor...
+        </li>
+        <li class="loading-step-item" id="load-step-4">
+          <span>⏳</span> Anlatım zenginleştiriliyor ve son dokunuşlar yapılıyor...
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== AYARLAR / API YAPILANDIRMA MODALI ==================== -->
+  <div class="modal-overlay" id="settings-modal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>⚙️ Yapay Zekâ ve Sistem Ayarları</h3>
+        <button type="button" class="modal-close" id="btn-close-settings">&times;</button>
+      </div>
+
+      <div class="modal-info-box">
+        💡 <strong>Önemli Bilgi:</strong> Uygulama herhangi bir API anahtarı olmadan da 
+        <strong>gelişmiş yerel Türkçe edebiyat motoru</strong> ile kesintisiz ve yüksek kalitede çalışır. 
+        Dilerseniz kendi Google Gemini API anahtarınızı girerek doğrudan Google AI ile de hikâye üretebilirsiniz.
+      </div>
+
+      <div class="form-group">
+        <label for="input-api-key">Gemini API Anahtarı (İsteğe Bağlı)</label>
+        <input type="password" id="input-api-key" class="form-input" placeholder="AIzaSy..." autocomplete="off">
+        <small style="color: var(--text-muted); font-size: 0.78rem;">
+          Anahtarınız yalnızca tarayıcınızın yerel hafızasında saklanır, asla dışarıya gönderilmez.
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="select-model-name">Yapay Zekâ Modeli</label>
+        <select id="select-model-name" class="form-select">
+          <option value="gemini-1.5-flash">Gemini 1.5 Flash (Hızlı ve Önerilen)</option>
+          <option value="gemini-2.0-flash">Gemini 2.0 Flash (En Yeni Nesil)</option>
+          <option value="gemini-1.5-pro">Gemini 1.5 Pro (Gelişmiş Edebi Derinlik)</option>
+        </select>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-tool" id="btn-clear-settings">Temizle</button>
+        <button type="button" class="btn-proceed-writing" id="btn-save-settings" style="padding: 10px 24px; font-size: 0.95rem;">
+          Kaydet ve Kapat
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        <strong>Hikâye Atölyesi – 4 Unsurla Hikâyeni Oluştur</strong> &bull; Türkçe & Edebiyat Dersi İnteraktif Eğitim Platformu
+      </p>
+      <p style="font-size: 0.8rem; margin-top: 4px; opacity: 0.8;">
+        Öğrencilerin yaratıcı düşünme, neden-sonuç bağı kurma ve edebi yazma becerilerini geliştirmek için tasarlanmıştır.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==================== JS MODÜLLERİ ==================== -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
