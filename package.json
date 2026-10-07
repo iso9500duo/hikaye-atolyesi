@@ -3,18 +3,15 @@
   "version": "1.0.0",
   "description": "4 Unsurla Hikâyeni Oluştur - Edebiyat ve Yaratıcı Yazarlık İnteraktif Web Uygulaması",
   "type": "module",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node server/server.js",
+    "dev": "node server/server.js"
   },
   "keywords": [
     "edebiyat",
     "hikaye",
     "egitim",
-    "yaratici-yazarlik",
-    "yapay-zeka",
-    "gemini"
+    "yaratici-yazarlik"
   ],
   "author": "Google DeepMind pair programming with User",
   "license": "MIT"
